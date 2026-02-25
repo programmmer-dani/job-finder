@@ -12,7 +12,7 @@ def find_career_pages(companies):
             career_page = career_page_scraping(company["website"])
             if career_page != "":
                 company["career_page"] = career_page
-        print(company["name"], company["career_page"])
+        #print(company["name"], company["career_page"])
     return companies
 
 
