@@ -22,6 +22,7 @@ def format_results(results):
                 "name": (tags.get("name") or "").strip() or "—",
                 "website": website,
                 "domain": domain,
+                "career_page": "",
             }
         )
     return companies
