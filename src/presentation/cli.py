@@ -13,8 +13,9 @@ def get_cities():
             raw = confirm
             
 def show_results(companies):
+    print("\n\n--------companies sorted from most potential match to least-----------\n\n")
+
     for company in companies:
-        print("\n\n--------companies sorted from most potential match to least-----------\n\n")
         # TODO: Add city to the output and to the companies dictionary: {company["city"]} - 
         if company["career_page"] != "":
             print(f"{company["name"]} - {company["career_page"]}")

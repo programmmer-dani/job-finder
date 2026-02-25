@@ -13,5 +13,4 @@ def sort_companies(companies):
             other_companies.append(company)
 
     sorted_companies = matching_companies + career_page_companies + other_companies
-    print(sorted_companies)
     return sorted_companies
