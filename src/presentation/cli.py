@@ -11,3 +11,12 @@ def get_cities():
             return cities
         if confirm:
             raw = confirm
+            
+def show_results(companies):
+    for company in companies:
+        print("\n\n--------companies sorted from most potential match to least-----------\n\n")
+        # TODO: Add city to the output and to the companies dictionary: {company["city"]} - 
+        if company["career_page"] != "":
+            print(f"{company["name"]} - {company["career_page"]}")
+        else:
+            print(f"{company["name"]} - {company["website"]}")

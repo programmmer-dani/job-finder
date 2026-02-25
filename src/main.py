@@ -1,23 +1,4 @@
-import os
-import certifi
-
-# Certifi so HTTPS works on macOS (avoiding SSL errors). Must run before any request/geopy import.
-os.environ.setdefault("SSL_CERT_FILE", certifi.where())
-os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
-
-from domain.job_matcher import search_matching_position
-from infrastructure.html_extractor import fetch_html
-from infrastructure.scraper import find_career_pages
-from application.company_discovery import find_companies
-from presentation.cli import get_cities
+from application.orchestrator import run
 
 if __name__ == "__main__":
-    cities = get_cities()
-    companies = find_companies(cities)
-    companies = find_career_pages(companies)
-    for company in companies:
-        company["potential_match"] = False
-        if company["career_page"] != "":
-            html = fetch_html(company["career_page"])
-            if html != "" and search_matching_position(html, ["sales executive"]):
-                company["potential_match"] = True
+    run()
