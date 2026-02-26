@@ -16,8 +16,9 @@ def run():
     user_input = get_user_input()
     cities = user_input[0]
     keywords = user_input[1]
+    company_tags = user_input[2]
     
-    companies = find_companies(cities)
+    companies = find_companies(cities, company_tags)
     
     companies = find_career_pages(companies)
     
