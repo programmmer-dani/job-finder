@@ -7,11 +7,10 @@ The tool can run for several minutes before finishing execution.
 
 ## How to use
 
-**Requirements:** Python 3, and dependencies from `requirements.txt`. Geocoding uses `geopy` (add to your environment if not already installed).
+**Requirements:** Python 3 and dependencies from `requirements.txt`.
 
 ```bash
 pip install -r requirements.txt
-# If geocoding fails: pip install geopy
 
 cd /path/to/job-finder
 python src/main.py
