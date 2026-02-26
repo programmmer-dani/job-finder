@@ -1,14 +1,19 @@
-def get_cities():
-    raw = input("Cities (comma-separated): ").strip()
+def get_user_input():
+    cities = get_input("citie(s)")
+    keywords = get_input("keyword(s)")
+    return cities, keywords
+
+def get_input(type):
+    raw = input(f"Enter one or more {type} (comma-separated): ").strip()
     while True:
-        cities = [c.strip() for c in raw.split(",") if c.strip()]
-        if not cities:
-            raw = input("Enter at least one city: ").strip()
+        user_input = [element.strip() for element in raw.split(",") if element.strip()]
+        if not user_input:
+            raw = input(f"Enter at least one {type}: ").strip()
             continue
-        print("  You entered:", ", ".join(cities))
+        print("  You entered:", ", ".join(user_input))
         confirm = input("Confirm? (y) or type to edit: ").strip().lower()
         if confirm in ("y", "yes"):
-            return cities
+            return user_input
         if confirm:
             raw = confirm
             
