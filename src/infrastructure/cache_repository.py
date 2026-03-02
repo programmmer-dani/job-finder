@@ -7,7 +7,10 @@ def load_cache():
     try:
         with open(CACHE_PATH, "r", encoding="utf-8") as f:
             return json.load(f)
-    except json.JSONDecodeError:
+    except (FileNotFoundError, json.JSONDecodeError):
+        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump({}, f, indent=2)
         return {}
 
 
