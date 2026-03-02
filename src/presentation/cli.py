@@ -2,6 +2,8 @@ def get_user_input():
     cities = get_input("citie(s)")
     keywords = get_input("keyword(s)")
     company_tags = get_company_tags()
+    if keywords == [""]:
+        keywords = None
     return cities, keywords, company_tags
 
 SECTORS = [
@@ -39,10 +41,17 @@ def get_company_tags():
             raw = confirm
 
 def get_input(type):
+    empty_input_allowed = False
+    
+    if type == "keyword(s)":
+        empty_input_allowed = True
+        type = "keyword(s) (leave empty to skip)"
+    
     raw = input(f"Enter one or more {type} (comma-separated): ").strip()
+    
     while True:
         user_input = [element.strip() for element in raw.split(",") if element.strip()]
-        if not user_input:
+        if not user_input and not empty_input_allowed:
             raw = input(f"Enter at least one {type}: ").strip()
             continue
         print("  You entered:", ", ".join(user_input))
